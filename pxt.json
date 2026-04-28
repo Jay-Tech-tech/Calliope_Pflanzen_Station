@@ -4,7 +4,17 @@
     "dependencies": {
         "core": "*",
         "v2": "*",
-        "grove": "github:calliope-edu/pxt-grove#v0.9.5"
+        "grove": "github:calliope-edu/pxt-grove#v0.9.5",
+        "storage": "github:calliope-edu/pxt-storage#f18d408b75c5516a0510fb8c4f5a81bbcf799508",
+        "datalogger": "*",
+        "funk": "*",
+        "microphone": "*",
+        "radio-broadcast": "*",
+        "servo": "*",
+        "rgblcd": "github:calliope-edu/pxt-rgblcd#56c3e13538ccd69ce37d7b9a5ef582c13696803c",
+        "CO2-Sensor-SCD40": "github:calliope-edu/co2-sensor-scd40#ab46a2481d98885153ae583780d9732b6a17d5cb",
+        "Dust-Sensor": "github:calliope-edu/pxt-hm3301_dust_sensor#65fb050082abcf53ccd1a2d35aed31dc5ba0da9c",
+        "SCD30": "github:calliope-edu/pxt-scd30#8769682cd8dd268815d93c0ba6306356ffc3a572"
     },
     "files": [
         "main.blocks",

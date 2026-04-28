@@ -1,6 +1,10 @@
 Temperatur = 0
 Helligkeit = 0
 
+def on_button_b():
+    music.stop_all_sounds()
+input.on_button_event(Button.B, input.button_event_click(), on_button_b)
+
 def on_forever():
     global Temperatur, Helligkeit
     # 1. Sensoren auslesen
@@ -12,13 +16,13 @@ def on_forever():
         basic.set_led_color(0x0000ff)
     elif Temperatur < 30:
         # Gelb
-        basic.set_led_color(0xffff00)
-    elif Temperatur < 32:
+        basic.set_led_color(0x00ff00)
+    elif Temperatur < 35:
         # Rot
         basic.set_led_color(0xff0000)
     # 3. Bodenfeuchtigkeit und Alarm
-    if grove.measure_moisture_analog(AnalogPin.C16, MoistureMode.ORIGINAL, MoistureOutput.NUMBER) > 300:
-        basic.show_icon(IconNames.HAPPY)
+    if grove.measure_moisture_analog(AnalogPin.C16, MoistureMode.ORIGINAL, MoistureOutput.NUMBER) > 100:
+        basic.show_number(grove.measure_moisture_analog(AnalogPin.C16, MoistureMode.ORIGINAL, MoistureOutput.NUMBER))
         # Schaltet den Dauerton ab, sobald die Pflanze genug Wasser hat
         music.stop_all_sounds()
     else:
@@ -69,5 +73,5 @@ def on_forever():
             # # # # #
             """)
     # 5. Wartezeit vor der nächsten Messung
-    basic.pause(2000)
+    basic.pause(200)
 basic.forever(on_forever)

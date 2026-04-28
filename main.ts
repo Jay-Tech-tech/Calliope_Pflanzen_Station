@@ -1,5 +1,8 @@
 let Temperatur = 0
 let Helligkeit = 0
+input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
+    music.stopAllSounds()
+})
 basic.forever(function () {
     // 1. Sensoren auslesen
     Temperatur = input.temperature()
@@ -10,14 +13,14 @@ basic.forever(function () {
         basic.setLedColor(0x0000ff)
     } else if (Temperatur < 30) {
         // Gelb
-        basic.setLedColor(0xffff00)
-    } else if (Temperatur < 32) {
+        basic.setLedColor(0x00ff00)
+    } else if (Temperatur < 35) {
         // Rot
         basic.setLedColor(0xff0000)
     }
     // 3. Bodenfeuchtigkeit und Alarm
-    if (grove.measureMoistureAnalog(AnalogPin.C16, MoistureMode.Original, MoistureOutput.Number) > 300) {
-        basic.showIcon(IconNames.Happy)
+    if (grove.measureMoistureAnalog(AnalogPin.C16, MoistureMode.Original, MoistureOutput.Number) > 100) {
+        basic.showNumber(grove.measureMoistureAnalog(AnalogPin.C16, MoistureMode.Original, MoistureOutput.Number))
         // Schaltet den Dauerton ab, sobald die Pflanze genug Wasser hat
         music.stopAllSounds()
     } else {
@@ -70,5 +73,5 @@ basic.forever(function () {
             `)
     }
     // 5. Wartezeit vor der nächsten Messung
-    basic.pause(2000)
+    basic.pause(200)
 })
